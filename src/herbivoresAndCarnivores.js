@@ -10,7 +10,8 @@ class Animal {
   }
 
   die() {
-    // Remover usando filter, conforme exigido
+    // Usar filter para manter apenas os animais com saúde maior que 0
+    // eslint-disable-next-line prettier/prettier
     Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
@@ -28,11 +29,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    // Checar apenas se é Herbivore e não está escondido
+    // Verifica apenas se o alvo é um Herbivore e não está escondido
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
 
-      // Se a saúde for <= 0, chamar die
+      // Se a saúde for menor ou igual a 0, o alvo morre
       if (target.health <= 0) {
         target.die();
       }
